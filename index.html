@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taller de Carpintería y Mueble</title>
+<meta name="description" content="Módulos, juegos e infografías del ciclo de Grado Superior de Diseño y Amueblamiento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--papel:#EBEFEA;--blanco:#F8FAF7;--tinta:#14263D;--tenue:#4A5B6E;--azul:#1B5AA0;--dm:#A98560;--pino:#EDCF94;--haya:#E0AE7C;--roble:#CDA063;--nogal:#573A28;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 1.0625rem/1.55 Barlow,Arial,sans-serif}
+a{color:var(--azul);text-underline-offset:.16em}
+a:focus-visible{outline:3px solid var(--azul);outline-offset:2px}
+.hoja{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
+header{padding:clamp(28px,5vw,56px) 0 clamp(20px,3vw,32px)}
+h1{font:600 clamp(2.5rem,7vw,5rem)/1 "Barlow Condensed",Arial,sans-serif;margin:0 0 .25em;letter-spacing:-.005em}
+header p{margin:0;max-width:62ch;color:var(--tenue);font-size:1.125rem}
+.plano{display:grid;grid-template-columns:34px 1fr;grid-template-rows:30px auto;margin-bottom:10px}
+.cota{color:var(--tinta);font:500 .9375rem/1 Barlow,Arial,sans-serif;position:relative;display:flex;align-items:center;justify-content:center}
+.cota span{background:var(--papel);padding:0 10px;position:relative}
+.cota::before{content:"";position:absolute;background:var(--tinta)}
+.cota.an{grid-column:2}
+.cota.an::before{left:0;right:0;top:50%;height:1px;box-shadow:0 0 0 0 var(--tinta)}
+.cota.an::after{content:"";position:absolute;left:0;right:0;top:calc(50% - 7px);height:15px;border-left:1px solid var(--tinta);border-right:1px solid var(--tinta)}
+.cota.al{grid-row:2;writing-mode:vertical-rl;transform:rotate(180deg)}
+.cota.al span{padding:10px 0}
+.cota.al::before{top:0;bottom:0;left:50%;width:1px}
+.cota.al::after{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 7px);width:15px;border-top:1px solid var(--tinta);border-bottom:1px solid var(--tinta)}
+.tablero{grid-column:2;grid-row:2;position:relative;aspect-ratio:2/1;background:repeating-linear-gradient(135deg,var(--dm) 0 2px,#C3A483 2px 8px);box-shadow:0 0 0 1px var(--tinta);scroll-margin-top:16px}
+.pieza{position:absolute;left:calc(var(--x)/2440*100%);top:calc(var(--y)/1220*100%);width:calc(var(--w)/2440*100%);height:calc(var(--h)/1220*100%);padding:clamp(8px,1.5vw,18px);color:var(--tinta);text-decoration:none;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;transition:filter .15s}
+.pieza:hover{filter:brightness(1.07)}
+.pieza:focus-visible{outline:3px solid var(--azul);outline-offset:-3px;z-index:1}
+.pino{background:var(--pino)}.haya{background:var(--haya)}.roble{background:var(--roble)}
+.nogal{background:var(--nogal);color:#fff}
+.nom{font:600 clamp(1.25rem,2.6vw,2rem)/1.05 "Barlow Condensed",Arial,sans-serif}
+.pieza[style*="--h:540"] .nom{font-size:clamp(1.75rem,5vw,3.75rem)}
+.sub{font-size:clamp(.875rem,1.4vw,1.0625rem);line-height:1.25;margin-top:.2em;padding-right:5.5em}
+.med{position:absolute;right:clamp(8px,1vw,14px);bottom:clamp(5px,.8vw,10px);font:500 clamp(.75rem,1.1vw,.9375rem)/1 Barlow,Arial,sans-serif;font-variant-numeric:tabular-nums}
+.pie-tablero{margin:0 0 clamp(36px,6vw,72px) 34px;color:var(--tenue);font-size:.9375rem}
+.mod,.bloque{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px clamp(24px,5vw,72px);padding:clamp(32px,5vw,56px) 0;border-top:2px solid var(--tinta);scroll-margin-top:0}
+h2{font:600 clamp(2rem,4.2vw,3.25rem)/1.05 "Barlow Condensed",Arial,sans-serif;margin:0}
+h3{font:600 1.625rem/1.1 "Barlow Condensed",Arial,sans-serif;margin:28px 0 12px}
+h3:first-child{margin-top:0}
+.curso{margin:.35em 0 1em;color:var(--tenue)}
+.intro,.enl{margin:0 0 1em;max-width:48ch}
+.uds{margin:0;padding:0 0 0 2.2em;align-self:start}
+.uds li{padding:.55em 0;border-bottom:1px solid #BCC6C4}
+.uds li::marker{font-weight:600;color:var(--tenue);font-variant-numeric:tabular-nums}
+.uds b{font-weight:600;display:block}
+.uds span{color:var(--tenue);display:block;font-size:1rem}
+.vuelve{grid-column:2;font-size:1rem;justify-self:start;margin-top:10px}
+.bloque>.ancho{grid-column:1/-1}
+.bloque .vuelve{grid-column:1/-1}
+.juegos{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.juegos li{padding:0 0 22px;margin-bottom:22px;border-bottom:1px solid #BCC6C4}
+.juegos li:last-child{border:0;margin:0;padding:0}
+.juegos p{margin:.2em 0 .7em;max-width:58ch}
+.boton{display:inline-block;background:var(--tinta);color:#fff;font-weight:600;padding:.5em 1.1em;text-decoration:none}
+.boton:hover{background:#26415F}
+.carteles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px 18px}
+.carteles a{color:var(--tinta);text-decoration:none;display:block}
+.carteles a:hover b{text-decoration:underline}
+.prev{display:block;aspect-ratio:5/7;background:var(--blanco);box-shadow:0 0 0 1px #BCC6C4;margin-bottom:8px;overflow:hidden}
+.prev img{display:block;width:100%;height:100%;object-fit:contain}
+.carteles b{font-weight:600;line-height:1.25;display:block}
+.fmt{color:var(--tenue);font-size:.9375rem}
+.lista{margin:0 0 1em;padding-left:1.2em}
+footer{border-top:2px solid var(--tinta);padding:24px 0 40px;color:var(--tenue);font-size:.9375rem}
+footer p{margin:0 0 .4em;max-width:80ch}
+@media (max-width:760px){
+.plano{display:block}
+.cota{display:none}
+.tablero{aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:0 0 10px}
+.pieza{position:relative;left:auto;top:auto;width:auto;height:auto;min-height:118px;padding:12px 12px 26px}
+.pieza[style*="--h:540"]{min-height:150px}
+.pieza .nom,.pieza[style*="--h:540"] .nom{font-size:1.625rem}
+.pie-tablero{margin-left:0;margin-top:10px}
+.sub{padding-right:0}
+.mod,.bloque{grid-template-columns:minmax(0,1fr)}
+.vuelve,.bloque .vuelve{grid-column:1}
+.bloque>.ancho{grid-column:1}
+.carteles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pieza{transition:none}}
+</style>
+</head>
+<body>
+<div class="hoja">
+<header>
+<h1>Taller de Carpintería y Mueble</h1>
+<p>Módulos, juegos e infografías del ciclo de Grado Superior de Diseño y Amueblamiento, en el IES Virgen de la Esperanza de La Línea de la Concepción.</p>
+</header>
+<main>
+<nav class="plano" aria-label="Secciones de la web">
+<div class="cota an" aria-hidden="true"><span>2440</span></div>
+<div class="cota al" aria-hidden="true"><span>1220</span></div>
+<div class="tablero" id="tablero"><a class="pieza pino" href="#fabricacion" style="--x:0;--y:0;--w:1200;--h:540"><span class="nom">Fabricación</span><span class="sub">Ensambles en marco y mesilla Tilt</span><span class="med">1200 × 540</span></a><a class="pieza haya" href="#prototipos" style="--x:1203.2;--y:0;--w:1200;--h:540"><span class="nom">Prototipos</span><span class="sub">Silla Void</span><span class="med">1200 × 540</span></a><a class="pieza haya" href="#instalacion" style="--x:0;--y:543.2;--w:800;--h:340"><span class="nom">Instalación</span><span class="sub">Tarima flotante y cocina</span><span class="med">800 × 340</span></a><a class="pieza pino" href="#intermodular" style="--x:803.2;--y:543.2;--w:800;--h:340"><span class="nom">Proyecto Intermodular</span><span class="sub">Del encargo a la defensa</span><span class="med">800 × 340</span></a><a class="pieza nogal" href="#juegos" style="--x:1606.4;--y:543.2;--w:800;--h:340"><span class="nom">Juegos</span><span class="sub">Escuadradora y despiece</span><span class="med">800 × 340</span></a><a class="pieza roble" href="#infografias" style="--x:0;--y:886.4;--w:1000;--h:280"><span class="nom">Infografías</span><span class="sub">15 carteles del taller</span><span class="med">1000 × 280</span></a><a class="pieza pino" href="#prl" style="--x:1003.2;--y:886.4;--w:700;--h:280"><span class="nom">Prevención de riesgos</span><span class="sub">Normas y máquinas</span><span class="med">700 × 280</span></a><a class="pieza haya" href="#profesorado" style="--x:1706.4;--y:886.4;--w:700;--h:280"><span class="nom">Para el profesorado</span><span class="sub">Cómo reutilizar el material</span><span class="med">700 × 280</span></a></div>
+</nav>
+<p class="pie-tablero">Plano de corte de un tablero, en milímetros, con disco de 3,2. Cada pieza abre una parte de la web.</p>
+<section id="fabricacion" class="mod"><div class="cab"><h2>Fabricación en Carpintería y Mueble</h2><p class="curso">1.º curso</p><p class="intro">Primero, ensambles en marco con herramientas manuales. Después, la mesilla Tilt con maquinaria: patas curvadas de pino radiata laminado, módulo de DM ensamblado con galletas, y cajón y puerta con cuarterones.</p><p class="enl">Juegos de este módulo: <a href="https://ghersan935-creator.github.io/Escuadradora/">Turno en la escuadradora</a> y <a href="https://ghersan935-creator.github.io/Escuadradora/despiece.html">Del plano al despiece</a>.</p></div><ol class="uds"><li value="1"><b>Ensambles en marco</b><span>Con herramientas manuales.</span></li><li value="2"><b>Encimera</b></li><li value="3"><b>Cajón</b></li><li value="4"><b>Puerta y frente de cajón</b></li><li value="5"><b>Módulo</b></li><li value="6"><b>Patas</b><span>Curvadas mediante laminado.</span></li><li value="7"><b>Montaje y herrajes</b><span>Montaje de la mesilla e investigación de herrajes.</span></li><li value="8"><b>Barnizado y dossier final</b></li></ol><a class="vuelve" href="#tablero">Volver al tablero</a></section><section id="prototipos" class="mod"><div class="cab"><h2>Prototipos en Carpintería y Mueble</h2><p class="curso">1.º curso</p><p class="intro">Cada estudiante fabrica su propia silla Void, de pino radiata y contrachapado laminado, desde los planos hasta el control de calidad.</p></div><ol class="uds"><li value="0"><b>Presentación del módulo</b></li><li value="1"><b>Planificación y plantillas</b><span>Interpretación de planos, hoja de ruta y fabricación de plantillas.</span></li><li value="2"><b>Mecanizado</b><span>Aserrado, cepillado y regruesado; piezas con patrón; laminado en molde; espigas y escopleaduras.</span></li><li value="3"><b>Montaje y embalaje</b><span>Montaje en seco, encolado, unión de asiento y respaldo, y embalaje.</span></li><li value="4"><b>Acabados</b><span>Investigación, preparación y aplicación del acabado.</span></li><li value="5"><b>Evaluación y optimización</b><span>Pruebas de la silla, control de calidad y propuestas de mejora.</span></li></ol><a class="vuelve" href="#tablero">Volver al tablero</a></section><section id="instalacion" class="mod"><div class="cab"><h2>Instalación en Carpintería y Mueble</h2><p class="curso">2.º curso</p><p class="intro">Dos instalaciones reales: una tarima flotante en un aula del centro y el montaje y ajuste de puertas y cajones de una cocina.</p></div><ol class="uds"><li value="1"><b>Prevención de riesgos y protección ambiental</b></li><li value="2"><b>Tipos de instalaciones</b></li><li value="3"><b>Replanteo</b><span>Medición, nivelación y aplomado.</span></li><li value="4"><b>Proyecto 1: tarima flotante</b></li><li value="5"><b>Proyecto 2: puertas y cajones de cocina</b></li><li value="6"><b>Carpintería de huecos</b></li></ol><a class="vuelve" href="#tablero">Volver al tablero</a></section><section id="intermodular" class="mod"><div class="cab"><h2>Proyecto Intermodular</h2><p class="curso">2.º curso</p><p class="intro">Cada estudiante desarrolla un proyecto propio de principio a fin y lo defiende ante el equipo docente.</p></div><ol class="uds"><li value="0"><b>Presentación general</b></li><li value="1"><b>Carpeta de encargo</b><span>Análisis del encargo, elección del proyecto, investigación y bocetos.</span></li><li value="2"><b>Dossier de representación técnica</b><span>Planos generales y modelo 3D.</span></li><li value="3"><b>Dossier técnico y económico</b><span>Planos de detalle, proveedores, presupuesto y cronograma.</span></li><li value="4"><b>Memoria y defensa</b><span>Memoria final y defensa oral.</span></li></ol><a class="vuelve" href="#tablero">Volver al tablero</a></section>
+<section id="juegos" class="bloque">
+<div><h2>Juegos</h2><p class="curso">Mejor en un ordenador</p>
+<p class="intro">Puedes repetirlos todas las veces que quieras. Al terminar se descarga un certificado en PDF con tu nota.</p></div>
+<ul class="juegos">
+<li><h3>Turno en la escuadradora</h3><p>Dibuja el plano de corte de cada tablero y corta todas las piezas de un encargo, con las reglas de nuestra máquina.</p><a class="boton" href="https://ghersan935-creator.github.io/Escuadradora/">Jugar a la escuadradora</a></li>
+<li><h3>Del plano al despiece</h3><p>Lee los planos del aparador Duna, identifica sus piezas y calcula la nota de madera y tableros. Las medidas cambian en cada intento.</p><a class="boton" href="https://ghersan935-creator.github.io/Escuadradora/despiece.html">Jugar al despiece</a></li>
+</ul>
+<a class="vuelve" href="#tablero">Volver al tablero</a>
+</section>
+<section id="infografias" class="bloque">
+<div class="ancho"><h2>Infografías</h2><p class="curso">Carteles en PDF para ver o imprimir</p></div>
+<div class="ancho"><h3>Máquinas</h3><ul class="carteles"><li><a href="https://drive.google.com/file/d/1aUtFStAvItp63MpskHK4cKMbwHg0xLYR/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1aUtFStAvItp63MpskHK4cKMbwHg0xLYR&amp;sz=w480" onerror="this.remove()"></span><b>Sierra de cinta</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1EfJWO7nF9A7kI4LFKsMSvlMTc31ZXN16/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1EfJWO7nF9A7kI4LFKsMSvlMTc31ZXN16&amp;sz=w480" onerror="this.remove()"></span><b>Cepilladora</b><span class="fmt">A2</span></a></li><li><a href="https://drive.google.com/file/d/1dz0sA-n6xnwZ6fZHu0LdVHsOrmCVE5et/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1dz0sA-n6xnwZ6fZHu0LdVHsOrmCVE5et&amp;sz=w480" onerror="this.remove()"></span><b>Regruesadora</b><span class="fmt">A2</span></a></li><li><a href="https://drive.google.com/file/d/1chgAoLyrILpNJnaRolR1ZrROCIlpT-ul/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1chgAoLyrILpNJnaRolR1ZrROCIlpT-ul&amp;sz=w480" onerror="this.remove()"></span><b>Escuadradora</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1pmjMSNYhu1HHLINhLgLD4SQSfO_zc7-2/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1pmjMSNYhu1HHLINhLgLD4SQSfO_zc7-2&amp;sz=w480" onerror="this.remove()"></span><b>Ingleteadora</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1_U9kiJeV9kbSxR-zmY9NydJ6nWvkocdE/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1_U9kiJeV9kbSxR-zmY9NydJ6nWvkocdE&amp;sz=w480" onerror="this.remove()"></span><b>Escopleadora de broca</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1STejedJibxlkaNI2gMsBLXiLqPpNIrhD/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1STejedJibxlkaNI2gMsBLXiLqPpNIrhD&amp;sz=w480" onerror="this.remove()"></span><b>Tupí</b><span class="fmt">A1</span></a></li></ul><h3>Madera</h3><ul class="carteles"><li><a href="https://drive.google.com/file/d/1m6LSbIWyHQEiXIOl2sczUruSoytb11bH/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1m6LSbIWyHQEiXIOl2sczUruSoytb11bH&amp;sz=w480" onerror="this.remove()"></span><b>Anatomía de la madera</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1KZYyxpqcPgm2t188NKwgcm0i__7yut36/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1KZYyxpqcPgm2t188NKwgcm0i__7yut36&amp;sz=w480" onerror="this.remove()"></span><b>Derivados de la madera</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1DABmBb5Vt3gS-M6kxrewEIhnS0tEHmR9/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1DABmBb5Vt3gS-M6kxrewEIhnS0tEHmR9&amp;sz=w480" onerror="this.remove()"></span><b>Coníferas</b><span class="fmt">A0</span></a></li><li><a href="https://drive.google.com/file/d/1Hv_OVdJSadwa6kJzI__E0YI5md76MeDK/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1Hv_OVdJSadwa6kJzI__E0YI5md76MeDK&amp;sz=w480" onerror="this.remove()"></span><b>Frondosas</b><span class="fmt">A0</span></a></li><li><a href="https://drive.google.com/file/d/1EqsFC0PBYIgkpYABLaSjTVFIVPZjY5n2/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1EqsFC0PBYIgkpYABLaSjTVFIVPZjY5n2&amp;sz=w480" onerror="this.remove()"></span><b>Tropicales</b><span class="fmt">A0</span></a></li></ul><h3>Taller</h3><ul class="carteles"><li><a href="https://drive.google.com/file/d/1rshdr_0cLWTyZ2vaWJoOXuTzfZvJIaBt/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1rshdr_0cLWTyZ2vaWJoOXuTzfZvJIaBt&amp;sz=w480" onerror="this.remove()"></span><b>Marcado y trazado</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1iAOK2uDVEiWvYRGw1JChkaELsUS7k4Ss/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1iAOK2uDVEiWvYRGw1JChkaELsUS7k4Ss&amp;sz=w480" onerror="this.remove()"></span><b>Medir, taladrar y fijar</b><span class="fmt">A1</span></a></li><li><a href="https://drive.google.com/file/d/1QNl8qpMTxGoCYrD8ycnBnD0r6nz8fftm/view" rel="noopener"><span class="prev"><img loading="lazy" alt="" width="240" height="340" src="https://drive.google.com/thumbnail?id=1QNl8qpMTxGoCYrD8ycnBnD0r6nz8fftm&amp;sz=w480" onerror="this.remove()"></span><b>Normas de uso del aula-taller</b><span class="fmt">A0</span></a></li></ul></div>
+<a class="vuelve" href="#tablero">Volver al tablero</a>
+</section>
+<section id="prl" class="bloque">
+<div><h2>Prevención de riesgos</h2><p class="curso">Común a Fabricación y Prototipos</p>
+<p class="intro">Trabajamos en un aula-taller con maquinaria real. La prevención se estudia antes de empezar y se tiene en cuenta durante todo el curso.</p></div>
+<div><ul class="lista"><li>Prevención general en el taller</li><li>Maquinaria pesada</li><li>Maquinaria electroportátil</li><li>Aplicación de acabados</li></ul>
+<p class="enl"><a href="https://drive.google.com/file/d/1QNl8qpMTxGoCYrD8ycnBnD0r6nz8fftm/view" rel="noopener">Normas de uso del aula-taller</a> y <a href="#infografias">carteles de cada máquina</a>.</p></div>
+<a class="vuelve" href="#tablero">Volver al tablero</a>
+</section>
+<section id="profesorado" class="bloque">
+<div><h2>Para el profesorado</h2></div>
+<div><p class="intro">Puedes usar y adaptar este material en tus clases, citando la autoría y sin fines comerciales (<a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener">licencia CC BY-NC 4.0</a>).</p>
+<p class="intro">Los juegos están hechos para las máquinas y los criterios de este taller. Cada uno es una única página web, así que puedes copiarla desde <a href="https://github.com/ghersan935-creator/Escuadradora" rel="noopener">su repositorio de GitHub</a> y adaptarla a los tuyos.</p></div>
+<a class="vuelve" href="#tablero">Volver al tablero</a>
+</section>
+</main>
+<footer>
+<p>Web personal de Gustavo Hernández Sánchez, profesor de Fabricación e Instalación de Carpintería y Mueble. No es la web oficial del IES Virgen de la Esperanza.</p>
+</footer>
+</div>
+</body>
+</html>
